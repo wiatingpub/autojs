@@ -1,0 +1,17 @@
+{
+    "first_time_run": true,
+    "test_friend_mode": 0,
+    "we_chat_release_source": null,
+    "include_friend": false,
+    "import_friend_mode": 0,
+    "manual_control_we_chat_release_source": false,
+    "we_chat_last_update_time": null,
+    "no_more_warning": false,
+    "debug": false,
+    "auto_update": true,
+    "clear_friend_current_page_work": false,
+    "click_delay_duration": 500,
+    "find_delay_duration": 1000,
+    "accumulator_delay_duration": 10000,
+    "reboot_script": true
+}

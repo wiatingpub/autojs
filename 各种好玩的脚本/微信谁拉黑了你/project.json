@@ -1,0 +1,19 @@
+{
+  "assets": [],
+  "build": {
+    "build_id": "",
+    "build_number": 0,
+    "build_time": 0
+  },
+  "useFeatures": [],
+  "icon": "res/logo.png",
+  "launchConfig": {
+    "hideLogs": true
+  },
+  "main": "main.js",
+  "name": "清理微信僵尸粉",
+  "packageName": "com.l8426936.cleanupwechatzombiefans",
+  "scripts": {},
+  "versionCode": 62,
+  "versionName": "4.0.3"
+}

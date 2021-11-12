@@ -1,0 +1,17 @@
+{
+    "blacklisted_message": "请确认你和他（她）的好友关系是否正常",
+    "deleted_message": "你不是收款方好友，对方添加你为好友后才能发起转账",
+    "network_error": "网络通信出现问题，请稍后再试",
+    "system_error": "系统繁忙，请稍后再试。",
+    "cancel_transfer": "取消支付",
+    "account_deleted": "对方已经删除帐号",
+    "contacts": "通讯录",
+    "delete": "删除",
+    "close": "关闭(,按钮)?",
+    "return": "返回",
+    "transfer": "转账",
+    "send_message": "发消息",
+    "switch_to_voice_message": "切换到按住说话",
+    "label": "标签",
+    "delete_label": "删除标签"
+}

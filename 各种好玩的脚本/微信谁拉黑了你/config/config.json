@@ -1,0 +1,34 @@
+{
+    "we_chat_package_name": "com.tencent.mm",
+    "supported_languages": "zh-CN",
+    "we_chat_release_source": {
+        "other": "com.tencent.android.qqdownloader|com.oppo.market|com.huawei.appmarket|com.qihoo.appstore|com.xiaomi.market|com.baidu.appsearch|com.meizu.mstore|com.bbk.appstore|com.pp.assistant|com.hiapk.marketpho|com.sogou.androidtool|com.wandoujia.phoenix2|com.yulong.android.coolmart|com.coolapk.market",
+        "google_play_store": "com.android.vending"
+    },
+    "supported_we_chat_versions": {
+        "google_play_store": {
+            "min_supported_versions": "7.0.16",
+            "max_supported_versions": "8.0.2"
+        },
+        "other": {
+            "min_supported_versions": "7.0.15",
+            "max_supported_versions": "8.0.15"
+        }
+    },
+    "ids_versions": {
+        "google_play_store": {
+            "7.0.16-7.0.16": "151f4782f0f0e5e6890f4a3cbb870602.json",
+            "7.0.17-7.0.17": "89d754d8e76738a63a09aaf3d39c237b.json",
+            "7.0.21-7.0.21": "3c02c7c6796f00dea15e9d68d1ebd61b.json",
+            "8.0.2-8.0.2": "f64edc04ce0d5780e3ddda8f5e3fe0c3.json"
+        },
+        "other": {
+            "7.0.15-7.0.22": "319eaaa239383427859206703a80ea03.json",
+            "8.0.0-8.0.3": "c71af7ea5e0656b2cf0a30d75dce7c5f.json",
+            "8.0.6-8.0.7": "c71af7ea5e0656b2cf0a30d75dce7c5f.json",
+            "8.0.9-8.0.9": "c71af7ea5e0656b2cf0a30d75dce7c5f.json",
+            "8.0.11-8.0.11": "0e8a55a3becc24a4453380b91fd0a33c.json",
+            "8.0.14-8.0.15": "d31815c66b35b8c8990c8d154332c578.json"
+        }
+    }
+}
