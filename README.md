@@ -24,7 +24,7 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 我去 Github 的 Issues 讨论区考了考古，发现了这些线索
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhGh3a78TcpLHtZGGvP8WbjF5VqnqGcaW68gQW3Bpsic8jXYnLAAra6sA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/xi_fan/img/raw/master/640)
 
 原因作者也说的明明白白，因为 Auto.js 被大面积的用于灰产，作者怕事态超出他的控制，才在无奈之下做出这样的选择。
 
@@ -32,7 +32,7 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 相比以前的免费版本，Pro 增加了不少开发向的功能，而且针对灰产进行了限制。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhO4lGbFdknhtW1nHibDNhap3dfrWWm7NzoWHt8Qibj9x4L5ic9xffbcSfw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114020618879](https://gitee.com/xi_fan/img/raw/master/image-20211114020618879.png)
 
 > 这么厉害，怎么获得安全的4.1版本？
 
@@ -55,7 +55,7 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 不知道大家听没听说过有个小技巧，微信进行转账时，对方把你拉黑删除后的提示信息会发生变化。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjh3wkreK9vj6JM2o8KRhMicJ1KGaUey0s0QoHFYcy84zlsNRb30Yic9G1g/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114020641792](https://gitee.com/xi_fan/img/raw/master/image-20211114020641792.png)
 
 左图是正常情况下的转账截图，右图则是对方将你删除后的转账截图，这种方法还不会打扰到对方。
 
@@ -67,15 +67,15 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 作者贴心的写了个 UI 界面，只要将我提供的压缩包解压到脚本文件夹，运行程序后你会看到作者的提醒。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhkhkCiaibRWibAPoAXnEkL2TsuImVs9ZiasOH0SmIQVfPkbDKRbodQRby5A/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114020717747](https://gitee.com/xi_fan/img/raw/master/image-20211114020717747.png)
 
 然后点击主页面的测试好友，脚本就会真正跑起来，对每个好友进行测试。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhbia8YpCee7iaVna4GpKmexic6e9ibicnPOweIdsX7j0RBM68y4WVICPAiatg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114020751803](https://gitee.com/xi_fan/img/raw/master/image-20211114020751803.png)
 
 最后你会得到一份正常好友和异常好友的清单。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhxpTEnRrA38068wBykPjUkxf62PSVyC2NvGkibm3nSUpxBN7oey4LIKQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114020809017](https://gitee.com/xi_fan/img/raw/master/image-20211114020809017.png)
 
 在最下方还贴心的为你提供了删除好友的选项。
 
@@ -83,7 +83,7 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 看看整体的效果图。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhlqz1S6VGTu15nf149YUVmQ7ZkGwKO4P1Iriad4LqIibCDfdqKKR2G6Nw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)
+![640](https://gitee.com/xi_fan/img/raw/master/640.gif)
 
 更巧的是刚好在截稿的前一天，这个脚本刚好完成了升级，改了几个 Bug，正适合我们去尝试。
 
@@ -91,17 +91,17 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 双十一不是马上就要来了，不知道大家喵币准备够了没。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhvJGrAehKEibJoWLicC4UOIx5R5CSqw4Kuibluf4RORaHTiakkACxl7XOrA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114020956718](https://gitee.com/xi_fan/img/raw/master/image-20211114020956718.png)
 
 接下来介绍的脚本可以通过帮你打开喵铺主页，点击小猫自动获取喵币，还可以浏览对应店铺获取喵币。
 
 而你需要做的，仅仅只是动手点个运行按钮，看看效果图。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhIB09nETBpeUyF51CXFIDFWGQkicFQXiaicq1eXOmsFlt7txuib2O2SC4vQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)      
+​      ![640 (1)](https://gitee.com/xi_fan/img/raw/master/640 (1).gif)
 
 别觉得上面眼花缭乱，40 多秒的录屏为了上传硬生生砍到 40 多帧。。。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhHIgPjzl2cicknRibuTo3vWONpyaudjq7xwQ80HPy4wMMzHqUZUlwCbqw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114021051084](https://gitee.com/xi_fan/img/raw/master/image-20211114021051084.png)
 
 实际看上面的代码，脚本会在适当的地方停顿，如果你觉得脚本整体运行过慢，可以适当的减少上面 sleep() 方法内的数值。
 
@@ -113,15 +113,11 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 这个脚本就是模仿手机滑动观看短视频的，其实只要是下拉类的 App 都能适配，下面以某音为例看看效果图。
 
-
-
-​      ![图片](https://mmbiz.qpic.cn/mmbiz_gif/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhn10eMP0LpSZ6Lw6LQI9oib9MxJ2HmDswbic0mN5JfofX7iaubVoDlMYWA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)
-
-
+![640 (2)](https://gitee.com/xi_fan/img/raw/master/640 (2).gif)
 
 上面的动图当然也进行了加速，但还是能看出中间有个手动切到某音的操作，这是为了能让这段脚本适用于更多刷刷刷的 App。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhIsLxjf2IyTwZmgexlpibatYjsKsE1ibCvXLniatpdRxQ03QIDiaLiaxbcfg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1) 
+![image-20211114021140836](https://gitee.com/xi_fan/img/raw/master/image-20211114021140836.png) 
 
 脚本中 sleep() 方法内的时间，就是用来切换之后要刷刷刷的 App 上的时间。
 
@@ -140,7 +136,7 @@ Auto.js 能做什么在我看来是一个很具备想象力的东西，因为只
 
 Auto.js 在使用过程中还是有很多需要注意的地方，但最重要的就是打开无障碍服务。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhfv0YweicLKqQVZTIUjBjodb3sdUurpiclffzcwE7YquLr9PoNejEsG2A/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114021159853](https://gitee.com/xi_fan/img/raw/master/image-20211114021159853.png)
 
 很多人都不知道什么是无障碍服务，给你们科普下
 
@@ -152,11 +148,11 @@ Auto.js 在使用过程中还是有很多需要注意的地方，但最重要的
 
 然后打开 App，进入到它的主页面，你能在右下角发现一个加号，点击加号就能选择导入本地脚本或创建一个空白文件脚本。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhRkyw3ibE2ogzdiaSOwNVK1UpXodiaT0r2PULeLDialEIOjsjYKMrxQVVHA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114021222931](https://gitee.com/xi_fan/img/raw/master/image-20211114021222931.png)
 
 当然你也可以通过电脑微信将脚本传到手机，然后再通过 Auto.js 将脚本导入。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_jpg/7omGzoTyJGmMLy1eTenm0fxvcIzJyQjhicdFyicGERB5OB4OZzFlnEkWbD6PGjkjg2CjS0spI2hCsP7ODZS4bdmg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20211114021235236](https://gitee.com/xi_fan/img/raw/master/image-20211114021235236.png)
 
 这一步后就可以开始进行脚本编写了。
 

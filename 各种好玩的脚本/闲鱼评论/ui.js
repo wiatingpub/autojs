@@ -59,8 +59,7 @@ function AppUtils() {
 
     this.clickView = function (obj) {
         if (obj == null) {
-            console.error("空指针:", obj);
-            exit();
+            return;
         }
         if (obj.clickable()) {
             this.click(obj);
@@ -84,8 +83,7 @@ function AppUtils() {
 
     this.clickXY = function (obj) {
         if (obj == null) {
-            console.error("空指针:{}", obj);
-            exit();
+            return;
         }
         let xy = obj.bounds();
         click(xy.centerX(), xy.centerY());
@@ -94,8 +92,7 @@ function AppUtils() {
 
     this.click = function (obj) {
         if (obj == null) {
-            console.error("空指针:{}", obj);
-            exit();
+            return;
         }
         obj.click();
         this.btnClickLog(obj)
@@ -106,7 +103,7 @@ function AppUtils() {
             let status = back();
             if (!status) {
                 console.error("回退失败...");
-                exit();
+                return;
             }
             console.log("回退，次数:" + time + 1);
             this.sleep(1000);
@@ -116,12 +113,19 @@ function AppUtils() {
     this.tryback = function (mainTarget) {
         if (mainTarget == null) {
             console.error("选择集为null，回退失败...");
-            exit();
+            return;
         }
 
-        let targetViews = className("android.view.View").depth(5).indexInParent(1).desc(mainTarget).findOnce();
-        if (targetViews != null) {
-            return;
+        let views = className("android.view.View").find();
+        for (let index in views) {
+            let view = views[index];
+            try{
+                if (view.desc() == mainTarget) {
+                    return;
+                }
+            } catch(error) {
+
+            }
         }
 
         console.log("找不到标签：" + mainTarget + "则回退");
@@ -137,7 +141,7 @@ function AppUtils() {
 }
 
 function Main() {
-    this.process = function (target, message, limit) {        
+    this.process = function (target, message, limit) {
         let utils = new AppUtils();
         utils.consoleShow();
         console.log("处理的参数：" + target + "," + message + "," + limit);
@@ -148,99 +152,100 @@ function Main() {
         let search = id("search_bar_layout").untilFind();
         utils.clickView(search[0]);
 
-        utils.sleep(1000)
         let sousuoInputs = className("android.widget.EditText").indexInParent(1).depth(6).untilFind()
+        sousuoInputs[0].setText(target)
         utils.paste(sousuoInputs[0], target);
 
-        utils.sleep(1000)
+        utils.sleep(1000);
         let results = className("android.view.View").descContains(target).untilFind();
         utils.clickView(results[0]);
         mainTarget = results[0].desc();
-        console.log("设置标签：" + mainTarget);
 
+        console.log("设置标签：" + mainTarget);
+        
         var targetViewMap = new java.util.HashMap();
         while (targetViewMap.size() < limit) {
-            let targetViews = className("android.view.View").descContains(target).untilFind().filter(function (w) {
-                return w.desc().length >= 10;
-            });
-            for (key in targetViews) {
-                let targetView = targetViews[key];
+            let viewIndex = 0;
+            while (true) {
+                let targetViews = className("android.view.View").descContains(target).untilFind().filter(function (w) {
+                    return w.desc().length >= 10;
+                });
+                if (targetViews.length <= viewIndex) {
+                    break;
+                }
+                let targetView = targetViews[viewIndex++];
                 let text = targetView.desc();
                 text = text.substring(0, Math.min(10, text.length));
                 if (!targetViewMap.containsKey(text)) {
-                    utils.sleep(2000);
+                    utils.sleep(1000);
                     utils.clickView(targetView);
+                    utils.sleep(1000);
                     if (textContains("客服").findOnce() != null) {
                         utils.tryback(mainTarget);
                         continue;
                     }
 
-                    let iwant = desc("我想要").findOnce()
-                    if (iwant == null) {
-                        console.warn("找不到我想要按钮:" + text);
-                        exit();
-                        utils.tryback(mainTarget);
-                        continue;
-                    }
+                    let btns = className("android.view.View").untilFind()
+                    var leaveMessage;
+                    for (key in btns) {
+                        let btn = btns[key]
+                        try {
+                            if (btn.desc() == null) {
+                                continue;
+                            }
 
-                    let leaveMessage = iwant.parent().child(6)
-                    if (leaveMessage != null) {
-                        utils.clickView(leaveMessage);
-                        utils.sleep(1000);
-                        let leaveMessage2 = className("android.view.View").descContains("就留言").findOnce();
-                        if (leaveMessage2 != null) {
-                            utils.clickView(leaveMessage2);
-                            utils.sleep(1000);
-                            let comment = textContains("看对眼就留言").findOnce()
-                            if (comment != null) {
-                                comment.setText(message)
-                                utils.sleep(1000);
-                            } else {
-                                console.warn("找不到留言按钮1：" + text + "2秒后回退")
-                                utils.sleep(2000);
-                                exit();
-                                utils.tryback(mainTarget);
-                                continue;
+                            if (btn.desc() == "留言") {
+                                leaveMessage = btn;
+                                break;
                             }
-                        } else {
-                            leaveMessage2 = textContains("看对眼就留言").findOnce();
-                            if (leaveMessage2 != null) {
-                                utils.click(leaveMessage2);
-                                utils.sleep(1000);
-                                let comment = id("comment_text").findOnce()
-                                if (comment != null) {
-                                    comment.setText(message)
-                                    utils.sleep(1000);
-                                } else {
-                                    console.warn("找不到留言按钮2：" + text + "2秒后回退")
-                                    utils.sleep(2000);
-                                    exit();
-                                    utils.tryback(mainTarget);
-                                    continue;
-                                }
-                            } else {
-                                console.warn("找不到留言按钮3：" + text + "2秒后回退")
-                                utils.sleep(2000); 
-                                exit();
-                                utils.tryback(mainTarget);
-                                continue;
+
+                            if (!isNaN(btn.desc())) {
+                                leaveMessage = btn;
+                                break;
                             }
+                        } catch (error) {
+
                         }
                     }
-                    let sendBtn = className("android.widget.Button").depth(1).id("send_button").text("发送").findOnce();
+                    
+                    utils.clickView(leaveMessage);
+                    utils.sleep(1000);
+                    try{
+                        leaveMessage.setText(message)
+                    } catch(error) {
+                    }
+                    try {
+                        let leaveMessage2 = descContains("看对眼就留言").findOnce();
+                        utils.clickView(leaveMessage2);
+                        utils.sleep(1000);
+                        leaveMessage2.setText(message)
+                    } catch (error) {
+                    }
+                    try {
+                        let leaveMessage3 = textContains("看对眼就留言").findOnce();
+                        utils.clickView(leaveMessage3);
+                        utils.sleep(1000);
+                        leaveMessage3.setText(message)
+                    } catch (error) {
+                    }
+                 
+                    utils.sleep(1000);
+                    let sendBtn = textContains("发送").findOnce();
                     if (sendBtn == null) {
                         console.warn("找不到发送按钮：" + text)
-                        utils.tryback(mainTarget);
                         continue;
                     }
-                    // utils.clickView(sendBtn);
-                    console.log("评论成功，避免被监控，停止3秒")
-                    utils.sleep(3000);
+                    utils.clickView(sendBtn);
+                    console.log("评论成功，避免被监控，停止1秒")
                     utils.tryback(mainTarget);
-                    utils.sleep(1000);
+                    utils.sleep(3000);
 
                     targetViewMap.put(text, targetView);
                     console.log("当前成功评论个数：" + targetViewMap.size())
+
+                    if (targetViewMap.size() >= limit) {
+                        break;
+                    }
                 }
             }
             while (true) {
