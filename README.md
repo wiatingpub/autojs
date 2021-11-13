@@ -83,7 +83,11 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 看看整体的效果图。
 
-![640](https://gitee.com/xi_fan/img/raw/master/640.gif)
+
+
+![640xxxx](https://gitee.com/xi_fan/img/raw/master/640xxxx.gif)
+
+
 
 更巧的是刚好在截稿的前一天，这个脚本刚好完成了升级，改了几个 Bug，正适合我们去尝试。
 
@@ -91,13 +95,21 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 双十一不是马上就要来了，不知道大家喵币准备够了没。
 
+
+
 ![image-20211114020956718](https://gitee.com/xi_fan/img/raw/master/image-20211114020956718.png)
+
+
 
 接下来介绍的脚本可以通过帮你打开喵铺主页，点击小猫自动获取喵币，还可以浏览对应店铺获取喵币。
 
 而你需要做的，仅仅只是动手点个运行按钮，看看效果图。
 
-​      ![640 (1)](https://gitee.com/xi_fan/img/raw/master/640 (1).gif)
+
+
+![640xxxxx2](https://gitee.com/xi_fan/img/raw/master/640xxxxx2.gif)
+
+
 
 别觉得上面眼花缭乱，40 多秒的录屏为了上传硬生生砍到 40 多帧。。。
 
@@ -113,7 +125,11 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 这个脚本就是模仿手机滑动观看短视频的，其实只要是下拉类的 App 都能适配，下面以某音为例看看效果图。
 
-![640 (2)](https://gitee.com/xi_fan/img/raw/master/640 (2).gif)
+
+
+![640xxxxxx3](https://gitee.com/xi_fan/img/raw/master/640xxxxxx3.gif)
+
+
 
 上面的动图当然也进行了加速，但还是能看出中间有个手动切到某音的操作，这是为了能让这段脚本适用于更多刷刷刷的 App。
 
