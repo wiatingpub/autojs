@@ -23,8 +23,7 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 > 4.1这么屌为什么会被下线？
 
 我去 Github 的 Issues 讨论区考了考古，发现了这些线索
-
-![图片](https://gitee.com/xi_fan/img/raw/master/640)
+![image](https://user-images.githubusercontent.com/14191575/141655022-59713ae0-f428-4430-9839-da2b337e8596.png)
 
 原因作者也说的明明白白，因为 Auto.js 被大面积的用于灰产，作者怕事态超出他的控制，才在无奈之下做出这样的选择。
 
@@ -83,11 +82,7 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 看看整体的效果图。
 
-
-
-![640xxxx](https://gitee.com/xi_fan/img/raw/master/640xxxx.gif)
-
-
+![640xxxx](https://user-images.githubusercontent.com/14191575/141655037-be5fdb7b-6815-4333-bd3f-217b3bc72f27.gif)
 
 更巧的是刚好在截稿的前一天，这个脚本刚好完成了升级，改了几个 Bug，正适合我们去尝试。
 
@@ -95,21 +90,12 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 
 双十一不是马上就要来了，不知道大家喵币准备够了没。
 
-
-
-![image-20211114020956718](https://gitee.com/xi_fan/img/raw/master/image-20211114020956718.png)
-
-
+![image](https://user-images.githubusercontent.com/14191575/141655126-df228068-50e8-41b7-a739-773c3b78d23d.png)
 
 接下来介绍的脚本可以通过帮你打开喵铺主页，点击小猫自动获取喵币，还可以浏览对应店铺获取喵币。
 
 而你需要做的，仅仅只是动手点个运行按钮，看看效果图。
-
-
-
-![640xxxxx2](https://gitee.com/xi_fan/img/raw/master/640xxxxx2.gif)
-
-
+![640xxxxx2](https://user-images.githubusercontent.com/14191575/141655050-f5cfef62-a27f-4955-b93e-3c8dd9ffc687.gif)
 
 别觉得上面眼花缭乱，40 多秒的录屏为了上传硬生生砍到 40 多帧。。。
 
@@ -124,12 +110,7 @@ Auto.js 就是一个可以用来开发脚本的app，它不只是支持开发，
 刷短视频类的脚本网上简直不要太多，这还不因为很多短视频 App 在推广的初期都承诺了刷视频可提现的承诺。
 
 这个脚本就是模仿手机滑动观看短视频的，其实只要是下拉类的 App 都能适配，下面以某音为例看看效果图。
-
-
-
-![640xxxxxx3](https://gitee.com/xi_fan/img/raw/master/640xxxxxx3.gif)
-
-
+![640xxxxxx3](https://user-images.githubusercontent.com/14191575/141655067-f4041649-55bf-463c-af84-f42cbb1b80b4.gif)
 
 上面的动图当然也进行了加速，但还是能看出中间有个手动切到某音的操作，这是为了能让这段脚本适用于更多刷刷刷的 App。
 
