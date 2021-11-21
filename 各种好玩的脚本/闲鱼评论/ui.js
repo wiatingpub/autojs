@@ -3,16 +3,25 @@
 ui.layout(
     <vertical>
         <text textSize="18sp" textColor="#000000" margin="20" textStyle="bold">
-            闲鱼自动评论
+            闲鱼自动评论【使用的时候按照提示开启权限】
         </text>
         <ScrollView>
             <vertical>
                 <text textSize="16sp" margin="8">1.宝贝标签</text>
                 <input w="*" text="卫衣" id="target" margin="0 16" />
+
                 <text textSize="16sp" margin="8">2. 评论内容</text>
                 <input w="*" text="你好" id="comment" margin="0 16" />
+                
                 <text textSize="16sp" margin="8">3. 总处理条数</text>
                 <input text="2" id="total" inputType="number" margin="0 16" />
+
+                <text textSize="16sp" margin="8">4. 是否清空数据库(是\否)</text>
+                <input w="*" text="否" id="dbClear" margin="0 16" />
+
+                <text textSize="16sp" margin="8">5. 是否点击发送留言</text>
+                <input w="*" text="否" id="isSend" margin="0 16" />
+
                 <linear gravity="center">
                     <button margin="16" id="ok">开始执行</button>
                 </linear>
@@ -25,12 +34,160 @@ ui.ok.click(() => {
     var target = ui.target.text();
     var comment = ui.comment.text();
     var total = ui.total.text();
+    var dbClear = ui.dbClear.text();
+    var isSend = ui.isSend.text();
     let main = new Main();
 
     threads.start(function () {
-        main.process(target, comment, total);
+        main.process(target, comment, total, dbClear, isSend);
     });
 });
+
+function DbUtils(dbName, createSQL, fieldMapping) {
+    importClass(android.database.sqlite.SQLiteDatabase);
+    importClass(android.content.ContentValues);
+    importClass(android.database.Cursor);
+
+    let dbName = dbName;
+    let createSQL = createSQL;
+    let fieldMapping = fieldMapping;
+
+    /**
+     * 打开数据库连接
+     */
+    this.open = function () {
+        let base_path = files.cwd();
+        files.ensureDir(base_path + "/data/");
+        return SQLiteDatabase.openOrCreateDatabase(base_path + this.dbName, null);
+    }
+
+    /**
+     * 关闭数据库连接
+     */
+    this.close = function (db) {
+        if (db && db.isOpen()) {
+            db.close();
+        }
+    }
+
+    /**
+     * 查询结果集转对象
+     * @param {Object} cursor
+     * @returns {Object}
+     */
+    this.cursorToObject = function (cursor, fieldMapping) {
+        let object = {};
+        for (let i = cursor.getColumnCount() - 1; i >= 0; i--) {
+            let column_name = cursor.getColumnName(i);
+            switch (fieldMapping[column_name]) {
+                case "String":
+                    object[column_name] = cursor.getString(i);
+                    break;
+                case "boolean":
+                    object[column_name] = cursor.getString(i) == "true";
+                    break;
+                case "int":
+                    object[column_name] = cursor.getInt(i);
+                    break;
+            }
+        }
+        return object;
+    }
+
+    /**
+     * 新增一行记录，例子："record", { desc: "124" }
+     * @param {String} table_name 
+     * @param {Object} object 
+     * @returns {boolean}
+     */
+    this.addRow = function (tableName, object) {
+        let db = this.open();
+        let values = new ContentValues();
+        for (let key in object) {
+            values.put(key, String(object[key]));
+        }
+        let result = db.insert(tableName, null, values);
+        this.close(db);
+        console.log("数据插入：" + values);
+        return result > 0;
+    }
+
+    /**
+     * 删除记录 例子："record""
+     * @param {String} table_name 
+     * @param {String} where_clause 
+     * @param {Array<String>} where_args 
+     * @returns {boolean}
+     */
+    this.deleteRows = function (tableName, whereClause, whereArgs) {
+        let db = this.open();
+        let result = db.delete(tableName, whereClause, whereArgs);
+        this.close(db);
+        console.log("清空记录条数：" + result)
+        return result > 0;
+    }
+
+    /**
+     * 修改记录
+     * @param {String} tableName
+     * @param {Object} object 
+     * @param {String} where_key 
+     * @returns {boolean}
+     */
+    this.modifyRow = function (tableName, object, whereKey) {
+        let db = this.open();
+        let values = new ContentValues();
+        for (let key in object) {
+            if (key == whereKey) {
+                continue;
+            }
+            values.put(key, String(object[key]));
+        }
+        let result = whereKey != null ? db.update(tableName, values, whereKey + " = ?", [object[whereKey]]) : db.update(tableName, values, null, null);
+        this.close(db);
+        return result > 0;
+    }
+
+    /**
+     * 查询记录，例子："SELECT * FROM xianyu WHERE desc = ?", ["125"], { "id": "int", "desc": "String" }
+     * @param {String} sql 
+     * @param {Array<String>} selectionArgs
+     * @param {Object} property_mapping_type 
+     * @returns {Array<Object>}
+     */
+    this.findRows = function (sql, selectionArgs, fieldMapping) {
+        let db = this.open();
+        let list = [];
+        let cursor = db.rawQuery(sql, selectionArgs);
+        while (cursor.moveToNext()) {
+            list.push(this.cursorToObject(cursor, fieldMapping));
+        }
+        cursor.close();
+        this.close(db);
+        return list;
+    }
+
+    /**
+     * 存在记录，例子："SELECT * FROM xianyu WHERE desc = ?", ["125"]
+     * @param {String} sql 
+     * @param {Array<String>} selectionArgs
+     * @returns {boolean}
+     */
+    this.isExistRow = function (sql, selectionArgs) {
+        let db = this.open();
+        let cursor = db.rawQuery(sql, selectionArgs);
+        let result = cursor.getCount();
+        cursor.close();
+        this.close(db);
+        return result > 0;
+    }
+
+    this.updateDatabase = function () {
+        let db = this.open();
+        db.execSQL(createSQL);
+        this.close(db);
+    }
+}
 
 function AppUtils() {
     // 打开app
@@ -141,28 +298,52 @@ function AppUtils() {
 }
 
 function Main() {
-    this.process = function (target, message, limit) {
+    this.process = function (target, message, limit, dbClear, isSend) {
+        let fieldMapping = {
+            "id": "int",
+            "desc": "String",
+        }
+
+        let table = "record";
+
+        let SQL = "CREATE TABLE IF NOT EXISTS " + table+" ("
+            + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "desc VARCHAR(255)"
+            + ")";
+        
+        let db = "xianyu";
+
         let utils = new AppUtils();
         utils.consoleShow();
-        console.log("处理的参数：" + target + "," + message + "," + limit);
-        let mainTarget;
+        console.log("处理的参数：" + target + "," + message + "," + limit + "," + dbClear + "," + isSend);
         auto.waitFor();
         utils.openApp("闲鱼");
+        
+        dbClear = dbClear == "是";
+        isSend = isSend == "是";
+        let dbUtils = new DbUtils(db, SQL, fieldMapping);
+        dbUtils.updateDatabase();
+        console.log("打开数据库...")
+        if (dbClear) { 
+            dbUtils.deleteRows(table, null, null)
+        }
 
         let search = id("search_bar_layout").untilFind();
         utils.clickView(search[0]);
+        utils.sleep(1000);
 
-        let sousuoInputs = className("android.widget.EditText").indexInParent(1).depth(6).untilFind()
+        let sousuoInputs = className("android.widget.EditText").untilFind()
         sousuoInputs[0].setText(target)
         utils.paste(sousuoInputs[0], target);
 
         utils.sleep(1000);
-        let results = className("android.view.View").descContains(target).untilFind();
-        utils.clickView(results[0]);
-        mainTarget = results[0].desc();
+        let result = desc("搜索").findOnce();
+        utils.clickView(result);
+        let mainTarget = target;
 
         console.log("设置标签：" + mainTarget);
-        
+        utils.sleep(1000);
+
         var targetViewMap = new java.util.HashMap();
         while (targetViewMap.size() < limit) {
             let viewIndex = 0;
@@ -176,6 +357,12 @@ function Main() {
                 let targetView = targetViews[viewIndex++];
                 let text = targetView.desc();
                 text = text.substring(0, Math.min(10, text.length));
+                let existStatus = dbUtils.isExistRow("SELECT * FROM  " + table + "  WHERE desc = ?", [text]);
+                if (existStatus) {
+                    console.log(text+"db已经记录过了，跳过")
+                    continue;
+                }
+
                 if (!targetViewMap.containsKey(text)) {
                     utils.sleep(1000);
                     utils.clickView(targetView);
@@ -235,12 +422,18 @@ function Main() {
                         console.warn("找不到发送按钮：" + text)
                         continue;
                     }
-                    utils.clickView(sendBtn);
-                    console.log("评论成功，避免被监控，停止1秒")
+
+                    if (isSend) {
+                        utils.clickView(sendBtn);
+                        utils.sleep(3000);
+                        console.log("评论成功，避免被监控，停止3秒")
+                    } else {
+                        console.log("测试模式，不做评论")
+                    }
                     utils.tryback(mainTarget);
-                    utils.sleep(3000);
 
                     targetViewMap.put(text, targetView);
+                    dbUtils.addRow(table, { desc: text });
                     console.log("当前成功评论个数：" + targetViewMap.size())
 
                     if (targetViewMap.size() >= limit) {
