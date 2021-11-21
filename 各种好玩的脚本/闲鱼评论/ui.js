@@ -53,7 +53,7 @@ function DbUtils(dbName, createSQL, fieldMapping) {
     let fieldMapping = fieldMapping;
 
     /**
-     * 打开数据库连接
+     * 打开数据库连接，例子：直接调用
      */
     this.open = function () {
         let base_path = files.cwd();
@@ -62,7 +62,7 @@ function DbUtils(dbName, createSQL, fieldMapping) {
     }
 
     /**
-     * 关闭数据库连接
+     * 关闭数据库连接，例子：直接调用
      */
     this.close = function (db) {
         if (db && db.isOpen()) {
@@ -113,7 +113,7 @@ function DbUtils(dbName, createSQL, fieldMapping) {
     }
 
     /**
-     * 删除记录 例子："record""
+     * 删除记录 例子："record",null,null 
      * @param {String} table_name 
      * @param {String} where_clause 
      * @param {Array<String>} where_args 
@@ -128,7 +128,7 @@ function DbUtils(dbName, createSQL, fieldMapping) {
     }
 
     /**
-     * 修改记录
+     * 修改记录，例子："record", { desc: "124", id : 1 }, "id"
      * @param {String} tableName
      * @param {Object} object 
      * @param {String} where_key 
@@ -182,6 +182,9 @@ function DbUtils(dbName, createSQL, fieldMapping) {
         return result > 0;
     }
 
+    /**
+     * 执行sql建表， 例子：直接调用
+     */
     this.updateDatabase = function () {
         let db = this.open();
         db.execSQL(createSQL);
@@ -299,18 +302,19 @@ function AppUtils() {
 
 function Main() {
     this.process = function (target, message, limit, dbClear, isSend) {
+        // 字段映射
         let fieldMapping = {
             "id": "int",
             "desc": "String",
         }
-
+        // 表名
         let table = "record";
-
+        // 建表
         let SQL = "CREATE TABLE IF NOT EXISTS " + table+" ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "desc VARCHAR(255)"
             + ")";
-        
+        // 数据库名
         let db = "xianyu";
 
         let utils = new AppUtils();
@@ -322,6 +326,7 @@ function Main() {
         dbClear = dbClear == "是";
         isSend = isSend == "是";
         let dbUtils = new DbUtils(db, SQL, fieldMapping);
+        // 创建数据库和表
         dbUtils.updateDatabase();
         console.log("打开数据库...")
         if (dbClear) { 
